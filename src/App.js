@@ -1,26 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+
+import './assets/css/black-dashboard-react.css';
+import './assets/css/nucleo-icons.css';
+import './assets/css/demo.css';
+
+import Admin from './Admin';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route path={'/admin'} render={props => <Admin {...props} />} />
+          <Redirect from='/' to='/admin/dashboard' />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
