@@ -7,7 +7,11 @@ import Sidebar from './template/Sidebar';
 import Footer from './template/Footer';
 import routes from './routes';
 import logo from './assets/img/react-logo.png';
+import {connect} from 'react-redux';
+
+
 var ps;
+
 
 class Admin extends Component {
     constructor(props) {
@@ -30,6 +34,7 @@ class Admin extends Component {
             }
         }
     }
+    
     componentWillUnmount() {
         if (navigator.platform.indexOf("Win") > -1) {
             ps.destroy();
@@ -37,6 +42,7 @@ class Admin extends Component {
             document.documentElement.classList.remove("perfect-scrollbar-on");
         }
     }
+
     componentDidUpdate(e) {
         if (e.history.action === "PUSH") {
             if (navigator.platform.indexOf("Win") > -1) {
@@ -95,7 +101,7 @@ class Admin extends Component {
                         bgColor={this.state.backgroundColor}
                         logo={{
                             outterLink: "https://www.creative-tim.com/",
-                            text: "Creative Tim",
+                            text: "MP - WEB",
                             imgSrc: logo
                         }}
                         toggleSidebar={this.toggleSidebar}
@@ -123,4 +129,8 @@ class Admin extends Component {
     }
 }
 
-export default Admin;
+const MapStateToProps = state => ({
+    user: state.login.user
+});
+
+export default connect(MapStateToProps, null)(Admin);

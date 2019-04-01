@@ -11740,7 +11740,8 @@ code {
   border-radius: 0.4285rem;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left: 0 none; }
+  border-left: 0 none;
+ }
 
 .input-group .form-control:first-child,
 .input-group-btn:first-child > .dropdown-toggle,
@@ -11750,7 +11751,8 @@ code {
 .input-group .form-control:last-child,
 .input-group-btn:last-child > .dropdown-toggle,
 .input-group-btn:first-child > .btn:not(:first-child) {
-  border-left: 0 none; }
+ /* border-left: 0 none; */
+ }
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: #1d253b;

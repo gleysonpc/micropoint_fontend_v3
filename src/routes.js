@@ -11,7 +11,7 @@ const routes = [
     },
     {
         path: "/profile",
-        name: "Profile",
+        name: "Perfil",
         icon: "tim-icons icon-single-02",
         component: Profile,
         layout: "/admin"

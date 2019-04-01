@@ -20,6 +20,11 @@ import {
     Modal
 } from "reactstrap";
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {logout} from '../auth/LoginActions';
+
+
 class AdminNavbar extends React.Component {
     constructor(props) {
         super(props);
@@ -175,18 +180,18 @@ class AdminNavbar extends React.Component {
                                             <img alt="..." src={require("../assets/img/anime3.png")} />
                                         </div>
                                         <b className="caret d-none d-lg-block d-xl-block" />
-                                        <p className="d-lg-none">Log out</p>
+                                        <p  className="d-lg-none">{this.props.user.name}</p>
                                     </DropdownToggle>
                                     <DropdownMenu className="dropdown-navbar" right tag="ul">
                                         <NavLink tag="li">
-                                            <DropdownItem className="nav-item">Profile</DropdownItem>
+                                            <DropdownItem className="nav-item">Perfil</DropdownItem>
                                         </NavLink>
                                         <NavLink tag="li">
-                                            <DropdownItem className="nav-item">Settings</DropdownItem>
+                                            <DropdownItem className="nav-item">Ajustes</DropdownItem>
                                         </NavLink>
                                         <DropdownItem divider tag="li" />
                                         <NavLink tag="li">
-                                            <DropdownItem className="nav-item">Log out</DropdownItem>
+                                            <DropdownItem onClick={() => this.props.logout()} className="nav-item">Log out</DropdownItem>
                                         </NavLink>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
@@ -218,4 +223,12 @@ class AdminNavbar extends React.Component {
     }
 }
 
-export default AdminNavbar;
+const MapStateToProps = state => ({
+    user: state.login.user
+});
+
+const MapDispatchToProps = dispatch => bindActionCreators({
+    logout
+},dispatch);
+
+export default connect(MapStateToProps, MapDispatchToProps)(AdminNavbar);
