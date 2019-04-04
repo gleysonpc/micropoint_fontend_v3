@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-
-import LoginReducer from '../src/auth/LoginReducer';
+import LoginReducer from './auth/LoginReducer';
+import {reducer as toasterReducer} from 'react-redux-toastr';
 
 const rootReducer = combineReducers({
-    login: LoginReducer,
+    auth: LoginReducer,
+    toastr: toasterReducer
 });
 
 export default rootReducer;

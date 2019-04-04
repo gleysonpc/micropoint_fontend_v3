@@ -224,7 +224,7 @@ class AdminNavbar extends React.Component {
 }
 
 const MapStateToProps = state => ({
-    user: state.login.user
+    user: state.auth.user
 });
 
 const MapDispatchToProps = dispatch => bindActionCreators({

@@ -19,6 +19,9 @@ export default (state = initial_state, action) => {
         case 'LOGIN_ERROR': 
         return {...state, isLoading: false, isAuthenticated:false}
 
+        case 'REGISTER_ERROR': 
+        return {...state, isLoading: false, isAuthenticated:false}
+
         case 'LOGIN_LOGOUT':
         return {...state, isAuthenticated:false, user:{}}
 

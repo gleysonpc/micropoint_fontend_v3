@@ -130,7 +130,7 @@ class Admin extends Component {
 }
 
 const MapStateToProps = state => ({
-    user: state.login.user
+    user: state.auth.user
 });
 
 export default connect(MapStateToProps, null)(Admin);

@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './assets/css/bootstrap.css';
-import 'react-notification-alert/dist/animate.css';
+
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,11 +15,14 @@ import promise from 'redux-promise';
 //Root reducers
 import reducers from './reducers';
 
+import Msg from './template/Msg';
+
 const store = applyMiddleware(thunk, promise)(createStore)(reducers);
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
+        <Msg />
     </Provider>
     , document.getElementById('root'));
 

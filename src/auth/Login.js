@@ -6,35 +6,21 @@ import {
     Spinner
 } from 'reactstrap';
 import '../assets/css/login.css';
-import NotificationAlert from 'react-notification-alert';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login, doneRequest, startRequest } from './LoginActions';
 import {Link} from 'react-router-dom';
+import {toastr} from 'react-redux-toastr';
 
-var options = {};
-options = {
-    place: 'tr',
-    message: (
-        <div>
-            <div>
-                Falha <b>Usuário ou senha incorreto!</b> - Verifique seus dados e tente novamente.
-            </div>
-        </div>
-    ),
-    type: "danger",
-    icon: "now-ui-icons ui-1_bell-53",
-    autoDismiss: 3
-}
 
 class Login extends Component {
     state = {
         email: 'gleyson_10@hotmail.com',
-        password: '123',
+        password: '123456',
     };
 
     accessDenied = () => {       
-        this.refs.notify.notificationAlert(options);
+        toastr.info('The title', 'The message');
     }
 
     handleLoginSubmit = (e) => {
@@ -53,8 +39,7 @@ class Login extends Component {
     render() {
         return (
             <>
-                <div className='container'>
-                    <NotificationAlert ref="notify" />
+                <div className='container'>                    
                     <Form className='box' onSubmit={(e) => this.handleLoginSubmit(e)}>
                         <div className="card p-4">
                             <div className="card-body">
@@ -83,7 +68,7 @@ class Login extends Component {
                                         <Button className="btn btn-info px-4" type="submit" disabled={this.props.isLoading} >Entrar</Button>
                                     </div>
                                     <div className="col-6 text-right">
-                                        <Button className="btn btn-link px-0" 
+                                        <Button className="btn btn-link px-0" onClick={() =>this.accessDenied()}
                                          type="button">Esqueceu sua senha?</Button>
                                     </div>
                                 </div>
@@ -102,9 +87,9 @@ class Login extends Component {
 }
 
 const MapStateToProps = state => ({
-    isLoading: state.login.isLoading,
-    isAuthenticated: state.login.isAuthenticated,
-    user: state.login.user
+    isLoading: state.auth.isLoading,
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
 
 const MapDispatchToProps = dispatch => bindActionCreators({

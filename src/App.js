@@ -36,7 +36,7 @@ class App extends Component {
 }
 
 const MapStateToProps = state => ({
-  isAuthenticated: state.login.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(MapStateToProps,null)(App);
